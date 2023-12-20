@@ -1,0 +1,35 @@
+{
+  "name": "graphql-example",
+  "version": "0.5.145",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "gateway",
+    "example-api"
+  ],
+  "scripts": {
+    "start": "concurrently \"npm:start-apis npm:start-gateway-delayed\"",
+    "start-gateway": "mesh dev --dir gateway",
+    "start-gateway-delayed": "delay 1 && npm run start-gateway",
+    "start-api-example": "ts-node example-api/index.ts",
+    "start-apis": "concurrently \"npm:start-api-*\""
+  },
+  "devDependencies": {
+    "concurrently": "8.2.2",
+    "delay-cli": "2.0.0",
+    "jest": "29.7.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
+  },
+  "dependencies": {
+    "@graphql-mesh/cli": "^0.88.4",
+    "@graphql-mesh/openapi": "0.97.3",
+    "@graphql-mesh/transform-filter-schema": "0.96.2",
+    "fets": "0.6.8",
+    "graphql": "^16.8.1",
+    "graphql-import": "1.0.2",
+    "husky": "^8.0.3",
+    "mesh": "7.0.3",
+    "patch-package": "^8.0.0"
+  }
+}

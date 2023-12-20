@@ -1,0 +1,13 @@
+sources:
+  - name: filter-header-param-example
+    handler:
+      openapi:
+        source: http://localhost:3000/openapi
+        endpoint: http://localhost:3000/
+    transforms:
+      - filterSchema:
+          filters:
+            - Query.*.!Accept_Language #filter the Accept-Language param
+
+serve:
+  playground: true
